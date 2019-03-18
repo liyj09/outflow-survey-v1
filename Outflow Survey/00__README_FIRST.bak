@@ -1,0 +1,31 @@
+Semi-automated IDL scripts. This procedure is first created by Fa-Cheng Li, and the specific steps of outflow survey see Li et al. 2018 (ApJS, 235, 15)
+
+Note the file names, file paths, and basic parameters which are related to the data used to search for outflow.
+
+First: Pretreatment:
+	Try to divide the cube data into several parts. It is better that each part only contained a single velocity component.
+
+Second: compile some functions that would be used in the following steps.
+	1, mkoutflow.pro
+	2, ident_outflow_test.pro
+	3, findpeakpos.pro
+	4, Lpeakv.pro
+
+Third: preliminary outflow candidates
+	1, Lpeakv.pro: the distribution of 13CO peak velocity;
+	2, Uwingv.pro: the distribution of extensional velocities of blue and red line wings (note the threshold that related to the data used);
+	3, Uwingvpeak.pro: the position of the minimum velocity extents (need installing starlink, note the parameters that related to the data used);
+	4, wingdiagnosis.pro: line diagnoses of the positions of the minimum velocity extents (note the threshold that related to the data used);
+
+Forth：manual check
+  1, draw_outflows.pro: check each outflow candidates and adjust the position and the line wing velocity;	
+  2, outflow_rank.pro: scoring system;
+  3, bipolarcmp.pro: pair to form bipolar outflow candidates;
+
+Fifth：calculation and outflow exhibition
+	cal_area.pro: compile this one;
+	cal_phy.pro: calculation physical parameters of each outflow candidates (note the threshold that related to the data used);
+  download_wise.pro: download wise data from "http://skyview.gsfc.nasa.gov/current/cgi/query.pl" (need installing plugin skvbatch_wget.pl);
+	out_figue.pro: plot outflow candidates.
+
+Other related files used in above process: mkpvbelt.pro, crofits.pro.
